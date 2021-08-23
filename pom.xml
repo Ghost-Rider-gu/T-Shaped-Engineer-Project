@@ -42,5 +42,6 @@
 
     <modules>
         <module>config-server</module>
+        <module>auth-service</module>
     </modules>
 </project>
