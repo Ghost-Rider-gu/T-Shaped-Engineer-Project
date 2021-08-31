@@ -21,6 +21,8 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR11</spring-cloud.version>
         <lombok.version>1.18.20</lombok.version>
+        <docker.plugin.version>1.4.13</docker.plugin.version>
+        <docker.image.prefix>smartshop</docker.image.prefix>
     </properties>
 
     <dependencyManagement>
