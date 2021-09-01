@@ -1,0 +1,13 @@
+server:
+  port: 8991
+
+spring:
+  datasource:
+    url: jdbc:postgresql://auth-service.cp7sfpktwiz7.eu-central-1.rds.amazonaws.com/authdb
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: update
