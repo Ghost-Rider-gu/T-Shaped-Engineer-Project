@@ -7,6 +7,7 @@ package com.online.shop.auth.api;
 
 import com.online.shop.auth.domain.user.User;
 import com.online.shop.auth.service.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +26,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/auth")
+    @PostMapping
+    @PreAuthorize("#oauth2.hasScope('backend')")
     public void createUser(@Valid @RequestBody User user) {
         userService.createUser(user);
     }
