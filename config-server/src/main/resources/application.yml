@@ -2,6 +2,8 @@ server:
   port: 9099
 
 spring:
+  application:
+    name: config-server
   cloud:
     config:
       server:

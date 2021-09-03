@@ -19,8 +19,9 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR11</spring-cloud.version>
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
         <lombok.version>1.18.20</lombok.version>
+        <swagger.version>3.0.0</swagger.version>
         <docker.plugin.version>1.4.13</docker.plugin.version>
         <docker.image.prefix>smartshop</docker.image.prefix>
     </properties>
@@ -41,5 +42,11 @@
         <module>config-server</module>
         <module>auth-service</module>
         <module>registry-service</module>
+        <module>catalog-service</module>
+        <module>order-service</module>
+        <module>account-service</module>
+        <module>api-gateway-service</module>
+        <module>monitoring-service</module>
+        <module>processing-service</module>
     </modules>
 </project>
