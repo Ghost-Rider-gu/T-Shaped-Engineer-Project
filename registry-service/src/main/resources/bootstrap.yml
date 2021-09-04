@@ -7,9 +7,6 @@ spring:
       fail-fast: true
       password: ${CONFIG_SERVER_PASSWORD}
       username: ${CONFIG_SERVER_USER_NAME}
-    loadbalancer:
-      ribbon:
-        enabled: false
 
 eureka:
   instance:
