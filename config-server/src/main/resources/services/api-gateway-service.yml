@@ -1,0 +1,45 @@
+server:
+  port: 8000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+  routes:
+    auth-service:
+      path: /user/**
+      url: http://auth-service:8991
+      stripPrefix: false
+      sensitiveHeaders:
+
+    account-service:
+      path: /account/**
+      serviceId: account-service
+      stripPrefix: false
+      sensitiveHeaders:
+
+    catalog-service:
+      path: /catalog/**
+      serviceId: catalog-service
+      stripPrefix: false
+      sensitiveHeaders:
+
+    order-service:
+      path: /order/**
+      serviceId: order-service
+      stripPrefix: false
+      sensitiveHeaders:
