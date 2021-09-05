@@ -38,8 +38,8 @@ public class OrderController {
         return orderService.getOrderById(orderId);
     }
 
-    @GetMapping("/account/{accountId}")
-    public List<Order> getOrdersByAccountId(@PathVariable Long accountId) {
-        return orderService.getAllOrdersByAccountId(accountId);
+    @GetMapping("/account/{accountName}")
+    public List<Order> getOrdersByAccountName(@PathVariable String accountName) {
+        return orderService.getAllOrdersByAccountName(accountName);
     }
 }

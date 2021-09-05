@@ -37,8 +37,8 @@ public class Order {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "account_id", nullable = false)
-    private Long accountId;
+    @Column(name = "account_name", nullable = false)
+    private String accountName;
 
     @ElementCollection
     @CollectionTable(name = "cart_item", joinColumns = @JoinColumn(name = "id"))

@@ -38,13 +38,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getAllOrdersByAccountId(Long accountId) {
-        Optional<List<Order>> orders = orderRepository.getOrdersByAccountId(accountId);
+    public List<Order> getAllOrdersByAccountName(String accountName) {
+        Optional<List<Order>> orders = orderRepository.getOrdersByAccountName(accountName);
         if (orders.isPresent()) {
-            log.info("Got orders by accountId '{}'", accountId);
+            log.info("Got orders by account name '{}'", accountName);
             return orders.get();
         } else {
-            log.error("Couldn't get orders by accountId");
+            log.error("Couldn't get orders by account name");
             throw new EntityNotFoundException("Orders not found");
         }
     }
