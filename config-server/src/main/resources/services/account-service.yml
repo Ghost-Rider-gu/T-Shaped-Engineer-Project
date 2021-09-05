@@ -1,0 +1,26 @@
+security:
+  oauth2:
+    client:
+      clientId: account-service
+      clientSecret: ${ACCOUNT_SERVICE_PASSWORD}
+      accessTokenUri: http://auth-service:8991/oauth/token
+      grant-type: client_credentials
+      scope: backend
+
+server:
+  port: 8992
+
+spring:
+  datasource:
+    url: jdbc:postgresql://account-service.cp7sfpktwiz7.eu-central-1.rds.amazonaws.com/accountdb
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: update
+
+feign:
+  hystrix:
+    enabled: true
