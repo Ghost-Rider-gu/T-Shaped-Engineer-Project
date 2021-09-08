@@ -1,0 +1,9 @@
+sudo: required
+
+services:
+  - docker
+
+language: java
+jdk: oraclejdk8
+
+# Build images and push into Docker Hub
