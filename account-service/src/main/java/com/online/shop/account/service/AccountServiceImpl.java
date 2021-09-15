@@ -59,10 +59,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account getAccountByName(String accountName) {
         return accountRepository.findAccountByName(accountName)
-                .orElseThrow(() -> {
-                    log.error("Couldn't find account");
-                    throw new EntityNotFoundException("Account not found");
-                });
+                .orElseThrow(() -> new EntityNotFoundException("Account not found"));
     }
 
     @Override

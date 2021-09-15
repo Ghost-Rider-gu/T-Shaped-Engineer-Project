@@ -28,9 +28,6 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         return clientRepository.findByClientId(clientId)
                 .map(ClientDetailsImpl::new)
-                .orElseThrow(() -> {
-                    log.error("Couldn't find client '{}' in database", clientId);
-                    throw new ClientRegistrationException(String.format("Client not found: %s", clientId));
-                });
+                .orElseThrow(() -> new ClientRegistrationException(String.format("Client not found: %s", clientId)));
     }
 }

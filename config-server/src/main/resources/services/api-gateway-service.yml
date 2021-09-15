@@ -22,7 +22,7 @@ zuul:
   routes:
     auth-service:
       path: /user/**
-      url: http://auth-service:8991
+      url: http://localhost:8991
       stripPrefix: false
       sensitiveHeaders:
 

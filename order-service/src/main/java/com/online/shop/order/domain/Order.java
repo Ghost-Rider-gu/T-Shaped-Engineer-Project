@@ -5,20 +5,18 @@
 
 package com.online.shop.order.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import java.util.List;
 
@@ -26,9 +24,9 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "order")
+@Table(name = "\"order\"")
 public class Order {
     private static final long serialVersionUID = 227563288582556419L;
 
@@ -40,10 +38,9 @@ public class Order {
     @Column(name = "account_name", nullable = false)
     private String accountName;
 
-    @ElementCollection
-    @CollectionTable(name = "cart_item", joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "item")
-    private List<Item> items;
+    @ElementCollection(targetClass = Integer.class)
+    @Column(name = "items")
+    private List<Integer> items;
 
     @Column(name = "total_price", nullable = false)
     private Double totalPrice;

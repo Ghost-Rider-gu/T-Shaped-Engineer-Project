@@ -8,12 +8,16 @@ services:
   registry-service:
     build: registry-service
     ports:
-    - 8990:8990
+      - 8990:8990
 
   api-gateway-service:
     build: api-gateway-service
     ports:
-    - 8000:8000
+      - 8000:8000
+
+  rabbitmq:
+    ports:
+      - 5672:5672
 
   auth-service:
     build: auth-service
@@ -38,9 +42,9 @@ services:
   order-service:
     build: order-service
     ports:
-    - 8994:8994
+      - 8994:8994
 
   processing-service:
     build: processing-service
     ports:
-    - 8999:8999
+      - 8999:8999

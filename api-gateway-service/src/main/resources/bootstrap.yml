@@ -3,7 +3,12 @@ spring:
     name: api-gateway-service
   cloud:
     config:
-      uri: http://config-server:9099
+      uri: http://localhost:9099
       fail-fast: true
       password: ${CONFIG_SERVER_PASSWORD}
       username: ${CONFIG_SERVER_USER_NAME}
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl.defaultZone: http://localhost:8990/eureka/
