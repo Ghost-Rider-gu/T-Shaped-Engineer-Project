@@ -3,7 +3,7 @@ security:
     client:
       clientId: processing-service
       clientSecret: ${PROCESSING_SERVICE_PASSWORD}
-      accessTokenUri: http://auth-service:8991/oauth/token
+      accessTokenUri: http://localhost:8991/oauth/token
       grant-type: client_credentials
       scope: backend
 
@@ -16,7 +16,10 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: update
+  batch:
+    initialize-schema: always

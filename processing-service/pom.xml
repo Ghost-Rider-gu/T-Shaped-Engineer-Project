@@ -18,7 +18,8 @@
     </parent>
 
     <properties>
-        <aws-s3.version>1.12.62</aws-s3.version>
+        <aws-java-sdk.version>1.12.62</aws-java-sdk.version>
+        <apache-commons.version>2.11.0</apache-commons.version>
     </properties>
 
     <dependencies>
@@ -87,7 +88,23 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-s3</artifactId>
-            <version>${aws-s3.version}</version>
+            <version>${aws-java-sdk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>${aws-java-sdk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-core</artifactId>
+            <version>${aws-java-sdk.version}</version>
+            <optional>false</optional>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${apache-commons.version}</version>
         </dependency>
         <!-- Lombok -->
         <dependency>
@@ -110,6 +127,12 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -123,19 +146,18 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>${docker.plugin.version}</version>
                 <configuration>
+                    <skipDockerInfo>true</skipDockerInfo>
                     <repository>${docker.image.prefix}/${project.artifactId}</repository>
                     <tag>${project.version}</tag>
                     <buildArgs>
-                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                        <JAR_FILE>./target/${project.name}.jar</JAR_FILE>
                     </buildArgs>
                 </configuration>
                 <executions>
                     <execution>
                         <id>default</id>
-                        <phase>install</phase>
                         <goals>
                             <goal>build</goal>
-                            <goal>push</goal>
                         </goals>
                     </execution>
                 </executions>
